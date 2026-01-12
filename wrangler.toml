@@ -4,8 +4,8 @@ compatibility_date = "2024-01-01"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "polyu-calendar-db"
-database_id = "xxxx-xxxx-xxxx-xxxx" # Placeholder
+database_name = "polyu-calendar-subscription-v1"
+database_id = "polyu-calendar-subscription" # Placeholder
 
 [cors]
 origins = ["*"]

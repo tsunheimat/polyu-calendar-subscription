@@ -1,16 +1,27 @@
 {
-    "name": "polyu-calendar-subscription-root",
+    "name": "polyu-calendar-subscription",
+    "version": "0.1.0",
     "private": true,
     "scripts": {
-        "setup:db": "npm --prefix backend run cf-typegen && cd backend && npx wrangler d1 create polyu-calendar-db",
-        "db:migrate:local": "cd backend && npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --local",
-        "db:migrate:remote": "cd backend && npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --remote",
-        "dev:backend": "cd backend && npm run dev",
-        "deploy:backend": "cd backend && npm run deploy",
+        "deploy": "wrangler deploy",
+        "dev": "wrangler dev",
+        "start": "wrangler dev",
+        "test": "vitest",
+        "cf-typegen": "wrangler types",
+        "setup:db": "npm run cf-typegen && npx wrangler d1 create polyu-calendar-db",
+        "db:migrate:local": "npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --local",
+        "db:migrate:remote": "npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --remote",
         "deploy:frontend": "npx wrangler pages deploy frontend --project-name polyu-calendar-web",
-        "deploy:all": "npm run deploy:backend && npm run deploy:frontend"
+        "deploy:all": "npm run deploy && npm run deploy:frontend"
     },
     "devDependencies": {
+        "@cloudflare/workers-types": "^4.20240208.0",
+        "fast-check": "^3.15.0",
+        "typescript": "^5.3.3",
+        "vitest": "^1.3.1",
         "wrangler": "^3.28.0"
+    },
+    "dependencies": {
+        "itty-router": "^5.0.0"
     }
 }
