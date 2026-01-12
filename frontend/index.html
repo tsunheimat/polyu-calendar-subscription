@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Subscribe to your PolyU eStudent calendar on Google Calendar, Apple Calendar, and Outlook. Sync your schedule automatically.">
+    <title>PolyU Calendar Subscription</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>PolyU Calendar</h1>
+            <p class="subtitle">Sync your eStudent schedule with your favorite calendar app.</p>
+        </header>
+
+        <main>
+            <section id="upload-section" class="card">
+                <h2>Import Calendar</h2>
+                <p class="instruction">Export your timetable as .ics from eStudent and upload it here.</p>
+
+                <form id="upload-form">
+                    <div class="file-drop-area" id="drop-area">
+                        <span class="file-msg">Drag & Drop or Click to Select</span>
+                        <input type="file" id="file-input" accept=".ics" required>
+                    </div>
+                    <button type="submit" id="upload-btn" class="primary-btn">Generate Feed</button>
+                    <div id="loading-indicator" class="hidden">
+                        <div class="spinner"></div> Processing...
+                    </div>
+                </form>
+                <div id="error-message" class="error hidden"></div>
+            </section>
+
+            <section id="result-section" class="card hidden">
+                <div class="success-icon">✓</div>
+                <h2>Subscription Ready!</h2>
+                <p>Add this URL to Google Calendar, Apple Calendar, or Outlook.</p>
+
+                <div class="url-box">
+                    <input type="text" id="feed-url" readonly>
+                    <button id="copy-btn" title="Copy to Clipboard">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="actions">
+                    <a href="#" id="webcal-link" class="secondary-btn">Open in Calendar App</a>
+                    <button id="reset-btn" class="text-btn">Upload another file</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>PolyU Calendar Subscription Service</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

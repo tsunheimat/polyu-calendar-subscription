@@ -1,0 +1,16 @@
+{
+    "name": "polyu-calendar-subscription-root",
+    "private": true,
+    "scripts": {
+        "setup:db": "npm --prefix backend run cf-typegen && cd backend && npx wrangler d1 create polyu-calendar-db",
+        "db:migrate:local": "cd backend && npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --local",
+        "db:migrate:remote": "cd backend && npx wrangler d1 execute polyu-calendar-db --file=./schema.sql --remote",
+        "dev:backend": "cd backend && npm run dev",
+        "deploy:backend": "cd backend && npm run deploy",
+        "deploy:frontend": "npx wrangler pages deploy frontend --project-name polyu-calendar-web",
+        "deploy:all": "npm run deploy:backend && npm run deploy:frontend"
+    },
+    "devDependencies": {
+        "wrangler": "^3.28.0"
+    }
+}
